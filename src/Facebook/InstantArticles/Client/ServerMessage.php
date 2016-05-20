@@ -35,12 +35,12 @@ class ServerMessage
     {
         Type::enforceWithin(
             $level,
-            [
+            array(
                 self::FATAL,
                 self::ERROR,
                 self::WARNING,
                 self::INFO
-            ]
+            )
         );
         Type::enforce(
             $message,
@@ -63,12 +63,12 @@ class ServerMessage
         $level = strtolower($level);
         $validLevel = Type::isWithin(
             $level,
-            [
+            array(
                 self::FATAL,
                 self::ERROR,
                 self::WARNING,
                 self::INFO
-            ]
+            )
         );
         if ($validLevel) {
             return new self($level, $message);

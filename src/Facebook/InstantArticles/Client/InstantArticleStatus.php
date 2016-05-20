@@ -21,7 +21,7 @@ class InstantArticleStatus
     /**
      * @var ServerMessage[]
      */
-    private $messages = [];
+    private $messages = array();
 
     /**
      * Instantiates a new InstantArticleStatus object.
@@ -29,17 +29,17 @@ class InstantArticleStatus
      * @param string $status
      * @param ServerMessage[] $messages
      */
-    public function __construct($status, $messages = [])
+    public function __construct($status, $messages = array())
     {
         Type::enforceWithin(
             $status,
-            [
+            array(
                 self::SUCCESS,
                 self::NOT_FOUND,
                 self::IN_PROGRESS,
                 self::FAILED,
                 self::UNKNOWN
-            ]
+            )
         );
         Type::enforceArrayOf(
             $messages,
@@ -62,12 +62,12 @@ class InstantArticleStatus
         $status = strtolower($status);
         $validStatus = Type::isWithin(
             $status,
-            [
+            array(
                 self::SUCCESS,
                 self::NOT_FOUND,
                 self::IN_PROGRESS,
                 self::FAILED
-            ]
+            )
         );
         if ($validStatus) {
             return new self($status, $messages);
@@ -83,7 +83,7 @@ class InstantArticleStatus
      *
      * @return InstantArticleStatus
      */
-    public static function success($messages = [])
+    public static function success($messages = array())
     {
         return new self(self::SUCCESS, $messages);
     }
@@ -93,7 +93,7 @@ class InstantArticleStatus
      *
      * @return InstantArticleStatus
      */
-    public static function notFound($messages = [])
+    public static function notFound($messages = array())
     {
         return new self(self::NOT_FOUND, $messages);
     }
@@ -103,7 +103,7 @@ class InstantArticleStatus
      *
      * @return InstantArticleStatus
      */
-    public static function inProgress($messages = [])
+    public static function inProgress($messages = array())
     {
         return new self(self::IN_PROGRESS, $messages);
     }
@@ -113,7 +113,7 @@ class InstantArticleStatus
      *
      * @return InstantArticleStatus
      */
-    public static function failed($messages = [])
+    public static function failed($messages = array())
     {
         return new self(self::FAILED, $messages);
     }
@@ -123,7 +123,7 @@ class InstantArticleStatus
      *
      * @return InstantArticleStatus
      */
-    public static function unknown($messages = [])
+    public static function unknown($messages = array())
     {
         return new self(self::UNKNOWN, $messages);
     }

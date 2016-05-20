@@ -34,11 +34,11 @@ class ImageRule extends ConfigurationSelectorRule
         $image_rule->withSelector($configuration['selector']);
 
         $image_rule->withProperties(
-            [
+            array(
                 self::PROPERTY_IMAGE_URL,
                 self::PROPERTY_LIKE,
                 self::PROPERTY_COMMENTS
-            ],
+            ),
             $configuration
         );
 

@@ -32,7 +32,7 @@ class Footer extends Element implements Container
     /**
      * @var string|Paragraph[] The text content of the credits
      */
-    private $credits = [];
+    private $credits = array();
 
     /**
      * @var string Copyright information of the article
@@ -65,7 +65,7 @@ class Footer extends Element implements Container
      */
     public function withCredits($credits)
     {
-        Type::enforce($credits, [Type::ARRAY_TYPE, Paragraph::getClassName(), Type::STRING]);
+        Type::enforce($credits, array(Type::ARRAY_TYPE, Paragraph::getClassName(), Type::STRING));
 
         // Checks if it is array to apply the enforce of param types as documented.
         if (Type::is($credits, Type::ARRAY_TYPE)) {

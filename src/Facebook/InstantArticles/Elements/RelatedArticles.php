@@ -32,7 +32,7 @@ class RelatedArticles extends Element implements Container
     /**
      * @var RelatedItem[] The related Articles
      */
-    private $items = [];
+    private $items = array();
 
     /**
      * @var string The title of the Related Articles content

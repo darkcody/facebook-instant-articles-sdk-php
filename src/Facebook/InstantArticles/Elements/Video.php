@@ -173,12 +173,12 @@ class Video extends Element implements Container
     {
         Type::enforceWithin(
             $presentation,
-            [
+            array(
                 Video::ASPECT_FIT,
                 Video::ASPECT_FIT_ONLY,
                 Video::FULLSCREEN,
                 Video::NON_INTERACTIVE
-            ]
+            )
         );
         $this->presentation = $presentation;
 
@@ -330,7 +330,7 @@ class Video extends Element implements Container
      */
     public function withGeoTag($geoTag)
     {
-        Type::enforce($geoTag, [Type::STRING, GeoTag::getClassName()]);
+        Type::enforce($geoTag, array(Type::STRING, GeoTag::getClassName()));
         if (Type::is($geoTag, Type::STRING)) {
             $this->geoTag = GeoTag::create()->withScript($geoTag);
         } elseif (Type::is($geoTag, GeoTag::getClassName())) {

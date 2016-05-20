@@ -69,12 +69,12 @@ class Client
         Type::enforce($appSecret, Type::STRING);
         Type::enforce($accessToken, Type::STRING);
 
-        $facebook = new Facebook([
+        $facebook = new Facebook(array(
             'app_id' => $appID,
             'app_secret' => $appSecret,
             'default_access_token' => $accessToken,
             'default_graph_version' => 'v2.5'
-        ]);
+        ));
 
         return new static($facebook, $pageID, $developmentMode);
     }
@@ -94,11 +94,11 @@ class Client
         $takeLive = $this->developmentMode ? false : $takeLive;
 
         // Assume default access token is set on $this->facebook
-        $this->facebook->post($this->pageID . Client::EDGE_NAME, [
+        $this->facebook->post($this->pageID . Client::EDGE_NAME, array(
           'html_source' => $article->render(),
           'take_live' => $takeLive,
           'development_mode' => $this->developmentMode,
-        ]);
+        ));
     }
 
     /**
@@ -115,7 +115,7 @@ class Client
     public function removeArticle($canonicalURL)
     {
         if (!$canonicalURL) {
-            return InstantArticleStatus::notFound(['$canonicalURL param not passed to ' . __FUNCTION__ . '.']);
+            return InstantArticleStatus::notFound(array('$canonicalURL param not passed to ' . __FUNCTION__ . '.'));
         }
 
         Type::enforce($canonicalURL, Type::STRING);
@@ -124,7 +124,7 @@ class Client
             $this->facebook->delete($articleID);
             return InstantArticleStatus::success();
         }
-        return InstantArticleStatus::notFound(['An Instant Article ID ' . $articleID . ' was not found for ' . $canonicalURL . ' in ' . __FUNCTION__ . '.']);
+        return InstantArticleStatus::notFound(array('An Instant Article ID ' . $articleID . ' was not found for ' . $canonicalURL . ' in ' . __FUNCTION__ . '.'));
     }
 
     /**
@@ -167,7 +167,7 @@ class Client
         $response = $this->facebook->get($articleID . '?fields=most_recent_import_status');
         $articleStatus = $response->getGraphNode()->getField('most_recent_import_status');
 
-        $messages = [];
+        $messages = array();
         if (isset($articleStatus['errors'])) {
             foreach ($articleStatus['errors'] as $error) {
                 $messages[] = ServerMessage::fromLevel($error['level'], $error['message']);

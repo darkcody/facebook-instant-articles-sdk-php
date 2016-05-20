@@ -53,11 +53,11 @@ class H3 extends TextContainer
     {
         Type::enforceWithin(
             $text_alignment,
-            [
+            array(
                 Caption::ALIGN_RIGHT,
                 Caption::ALIGN_LEFT,
                 Caption::ALIGN_CENTER
-            ]
+            )
         );
         $this->textAlignment = $text_alignment;
 
@@ -89,11 +89,11 @@ class H3 extends TextContainer
     {
         Type::enforceWithin(
             $position,
-            [
+            array(
                 Caption::POSITION_ABOVE,
                 Caption::POSITION_BELOW,
                 Caption::POSITION_CENTER
-            ]
+            )
         );
         $this->position = $position;
 
@@ -117,7 +117,7 @@ class H3 extends TextContainer
 
         $h3 = $document->createElement('h3');
 
-        $classes = [];
+        $classes = array();
         if ($this->position) {
             $classes[] = $this->position;
         }

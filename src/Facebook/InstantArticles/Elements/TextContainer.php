@@ -23,7 +23,7 @@ abstract class TextContainer extends Element implements Container
     /**
      * @var array The content is a list of strings and FormattingElements
      */
-    private $textChildren = [];
+    private $textChildren = array();
 
     /**
      * Adds content to the formatted text.
@@ -34,7 +34,7 @@ abstract class TextContainer extends Element implements Container
      */
     public function appendText($child)
     {
-        Type::enforce($child, [Type::STRING, FormattedText::getClassName(), TextContainer::getClassName()]);
+        Type::enforce($child, array(Type::STRING, FormattedText::getClassName(), TextContainer::getClassName()));
         $this->textChildren[] = $child;
 
         return $this;

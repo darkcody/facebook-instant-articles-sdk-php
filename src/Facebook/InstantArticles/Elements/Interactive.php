@@ -121,10 +121,10 @@ class Interactive extends Element implements Container
     {
         Type::enforceWithin(
             $width,
-            [
+            array(
                 Interactive::NO_MARGIN,
                 Interactive::COLUMN_WIDTH
-            ]
+            )
         );
         $this->width = $width;
 

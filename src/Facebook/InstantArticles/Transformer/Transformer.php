@@ -19,12 +19,12 @@ class Transformer
     /**
      * @var Rule[]
      */
-    private $rules = [];
+    private $rules = array();
 
     /**
      * @var array
      */
-    private $warnings = [];
+    private $warnings = array();
 
     /**
      * @var int
@@ -39,7 +39,7 @@ class Transformer
     /**
      * @var array
      */
-    private static $allClassTypes = [];
+    private static $allClassTypes = array();
 
     /**
      * Gets all types a given class is, including itself, parent classes and interfaces.
@@ -57,7 +57,7 @@ class Transformer
 
         $classParents = class_parents($className, true);
         $classInterfaces = class_implements($className, true);
-        $classNames = [$className];
+        $classNames = array($className);
         if ($classParents) {
             $classNames = array_merge($classNames, $classParents);
         }
@@ -88,12 +88,12 @@ class Transformer
 
         // Handles multiple contexts
         if (!is_array($contexts)) {
-            $contexts = [$contexts];
+            $contexts = array($contexts);
         }
 
         foreach ($contexts as $context) {
             if (!isset($this->rules[$context])) {
-                $this->rules[$context] = [];
+                $this->rules[$context] = array();
             }
             $this->rules[$context][$this->ruleCount++] = $rule;
         }
@@ -140,7 +140,7 @@ class Transformer
                 $contextClassNames = self::getAllClassTypes($context->getClassName());
 
                 // Look for rules applying to any of them as context
-                $matchingContextRules = [];
+                $matchingContextRules = array();
                 foreach ($contextClassNames as $contextClassName) {
                     if (isset($this->rules[$contextClassName])) {
                         // Use array union (+) instead of merge to preserve
@@ -225,7 +225,7 @@ class Transformer
      */
     public function resetRules()
     {
-        $this->rules = [];
+        $this->rules = array();
         $this->ruleCount = 0;
     }
 
@@ -238,7 +238,7 @@ class Transformer
     {
         // Do not expose internal map, just a simple array
         // to keep the interface backwards compatible.
-        $flatten_rules = [];
+        $flatten_rules = array();
         foreach ($this->rules as $ruleset) {
             foreach ($ruleset as $priority => $rule) {
                 $flatten_rules[$priority] = $rule;

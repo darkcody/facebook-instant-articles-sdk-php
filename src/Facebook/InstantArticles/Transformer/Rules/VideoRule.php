@@ -77,7 +77,7 @@ class VideoRule extends ConfigurationSelectorRule
         }
 
         $video_rule->withProperties(
-            [
+            array(
                 self::PROPERTY_VIDEO_URL,
                 self::PROPERTY_VIDEO_TYPE,
 
@@ -91,7 +91,7 @@ class VideoRule extends ConfigurationSelectorRule
 
                 self::PROPERTY_LIKE,
                 self::PROPERTY_COMMENTS
-            ],
+            ),
             $configuration
         );
         return $video_rule;

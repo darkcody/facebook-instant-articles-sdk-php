@@ -143,12 +143,12 @@ class Image extends Audible implements Container
     {
         Type::enforceWithin(
             $presentation,
-            [
+            array(
                 Image::ASPECT_FIT,
                 Image::ASPECT_FIT_ONLY,
                 Image::FULLSCREEN,
                 Image::NON_INTERACTIVE
-            ]
+            )
         );
         $this->presentation = $presentation;
 
@@ -202,7 +202,7 @@ class Image extends Audible implements Container
      */
     public function withGeoTag($geo_tag)
     {
-        Type::enforce($geo_tag, [Type::STRING, GeoTag::getClassName()]);
+        Type::enforce($geo_tag, array(Type::STRING, GeoTag::getClassName()));
         if (Type::is($geo_tag, Type::STRING)) {
             $this->geoTag = GeoTag::create()->withScript($geo_tag);
         } elseif (Type::is($geo_tag, GeoTag::getClassName())) {

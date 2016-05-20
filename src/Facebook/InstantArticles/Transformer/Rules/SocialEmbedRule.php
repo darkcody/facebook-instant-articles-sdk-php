@@ -35,12 +35,12 @@ class SocialEmbedRule extends ConfigurationSelectorRule
         $social_embed_rule->withSelector($configuration['selector']);
 
         $social_embed_rule->withProperties(
-            [
+            array(
                 self::PROPERTY_IFRAME,
                 self::PROPERTY_URL,
                 self::PROPERTY_WIDTH,
                 self::PROPERTY_HEIGHT
-            ],
+            ),
             $configuration
         );
 

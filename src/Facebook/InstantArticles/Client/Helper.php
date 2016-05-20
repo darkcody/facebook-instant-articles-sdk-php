@@ -47,11 +47,11 @@ class Helper
         Type::enforce($appID, Type::STRING);
         Type::enforce($appSecret, Type::STRING);
 
-        $facebook = new Facebook([
+        $facebook = new Facebook(array(
             'app_id' => $appID,
             'app_secret' => $appSecret,
             'default_graph_version' => 'v2.5'
-        ]);
+        ));
 
         return new static($facebook);
     }

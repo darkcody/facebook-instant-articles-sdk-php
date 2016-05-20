@@ -23,7 +23,7 @@ abstract class ConfigurationSelectorRule extends Rule
     /**
      * @var AbstractGetter[]
      */
-    protected $properties = [];
+    protected $properties = array();
 
     /**
      * @param string $selector
