@@ -330,8 +330,9 @@ class InstantArticle extends Element implements Container
                     if (count($child->getTextChildren()) === 0) {
                         continue;
                     } elseif (count($child->getTextChildren()) === 1) {
-                        if (Type::is($child->getTextChildren()[0], Type::STRING) &&
-                            trim($child->getTextChildren()[0]) === '') {
+                        $children = $child->getTextChildren();
+                        if (Type::is($children[0], Type::STRING) &&
+                            trim($children[0]) === '') {
                             continue;
                         }
                     }
